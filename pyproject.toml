@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fast-fourier-transform-quality"
+version = "0.1.0"
+description = "Fast Fourier Transform metrics for detail loss, flicker and keyframe pulsing in images and video"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Mustafa Tomak" }]
+dependencies = ["numpy>=1.24", "scipy>=1.10"]
+
+[project.optional-dependencies]
+video = ["opencv-python-headless>=4.8"]
+plot = ["matplotlib>=3.7"]
+examples = ["matplotlib>=3.7", "opencv-python-headless>=4.8", "pillow>=9.1", "scikit-image>=0.20"]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+fast-fourier-transform-quality = "fast_fourier_transform_quality.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
